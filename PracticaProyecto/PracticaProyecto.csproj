@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-PracticaProyecto-34434e05-91f5-4b71-b05c-f5b12d56668b</UserSecretsId>
   </PropertyGroup>
