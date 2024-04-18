@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PracticaProyecto.AccesoDatos.Repositorio
 {
-    internal class CategoriaRepositorio : Repositorio<Categoria>, ICategoriaRepositorio
+    public class CategoriaRepositorio : Repositorio<Categoria>, ICategoriaRepositorio
     {
         private readonly ApplicationDbContext _db;
 
