@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PracticaProyecto.AccesoDatos.Repositorio.IRepositorio;
 using PracticaProyecto.Modelos;
+using PracticaProyecto.Modelos.ViewModels;
 
 namespace PracticaProyecto.Areas.Admin.Controllers
 {
@@ -21,7 +22,28 @@ namespace PracticaProyecto.Areas.Admin.Controllers
         // Método Upsert GET
         public async Task<IActionResult> Upsert(int? id)
         {
-            return View();
+            ProductoVM productoVM = new ProductoVM()
+            {
+                Producto = new Producto(),
+                CategoriaLista = _unidadTrabajo.Producto.ObtenerTodosDropDownList("Categoria"),
+                MarcaLista = _unidadTrabajo.Producto.ObtenerTodosDropDownList("Marca")
+
+            };
+
+            if (id == null)
+            {
+                return View(productoVM);
+            }
+            else
+            {
+                productoVM.Producto = await _unidadTrabajo.Producto
+                    .Obtener(id.GetValueOrDefault());
+                if (productoVM.Producto == null)
+                {
+                    return NotFound();
+                }
+                return View(productoVM);
+            }
         }
 
         // Región API
