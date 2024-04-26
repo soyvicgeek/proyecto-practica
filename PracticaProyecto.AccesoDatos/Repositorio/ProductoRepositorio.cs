@@ -8,7 +8,6 @@ namespace PracticaProyecto.AccesoDatos.Repositorio
     public class ProductoRepositorio : Repositorio<Producto>, IProductoRepositorio
     {
         private readonly ApplicationDbContext _db;
-
         public ProductoRepositorio(ApplicationDbContext db) : base(db)
         {
             _db = db;
@@ -52,6 +51,14 @@ namespace PracticaProyecto.AccesoDatos.Repositorio
                 return _db.Marcas.Where(c => c.Estado == true).Select(c => new SelectListItem
                 {
                     Text = c.Nombre,
+                    Value = c.Id.ToString()
+                });
+            }
+            if (obj == "Producto")
+            {
+                return _db.Productos.Where(c => c.Estado == true).Select(c => new SelectListItem
+                {
+                    Text = c.Descripcion,
                     Value = c.Id.ToString()
                 });
             }
